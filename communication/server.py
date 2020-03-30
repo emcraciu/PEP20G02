@@ -1,11 +1,7 @@
-from random import randint
-
-server_rand = randint(1, 10)
+from communication.communicator import Communicator
 
 
-def server(prime, base, value=None):
-    if value is None:
-        power = base ** server_rand % prime
-    else:
-        power = value ** server_rand % prime
-    return power
+class Server(Communicator):
+
+    def __init__(self, prime, base):
+        super().__init__(prime, base)

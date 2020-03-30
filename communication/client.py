@@ -1,29 +1,7 @@
-from random import randint
+from communication.communicator import Communicator
 
 
-class Client():
-    value = None
+class Client(Communicator):
 
     def __init__(self, prime, base):
-        self.client_rand = randint(1, 10)
-        self.prime = prime
-        self.base = base
-        self.distribute = self.calculate_distribute(base)
-
-    def value_modifier(self, value):
-        self.value = value
-
-    def calculate_distribute(self, base):
-        return base ** self.client_rand % self.prime
-
-    def calculate_send_distribute(self):
-        if self.base:
-            return self.calculate_distribute(self.base)
-        else:
-            raise ValueError('self.base is {}'.format(self.base))
-
-    def calculate_response_distribute(self):
-        if self.value:
-            return self.calculate_distribute(self.value)
-        else:
-            raise ValueError('self.value is {}'.format(self.value))
+        super().__init__(prime, base)
