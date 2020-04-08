@@ -89,3 +89,101 @@ result1 = [animal for animal in animale if not animal.startswith('c')][::-1]
 result2 = [animal for animal in filter(lambda animal: not animal.startswith('c'), [animal for animal in map(lambda animal: animale[-animale.index(animal) - 1], animale)])]
 
 print(result1 == result2)
+
+
+# ###############################################################
+# # Folosirea fisierelor in python
+
+# path absolut /dir1/dir2/fisier.py
+# relativ dir2/fisier.py
+
+logfile = 'testfile.log'
+data = open(logfile, 'rb')
+print(type(data))
+print(dir(data))
+text = data.read()
+
+text0 = 'alfabet'
+# opening file with w+ should not delete existing content (will investigate)
+data1 = open('testfile2.log', 'w+t')
+text1 = data1.read()
+new_text = text0 + text1
+data1.write(new_text)
+data1.close()
+
+text2 = '\n Add this text'
+data2 = open('testfile2.log', 'a')
+data2.write(text2)
+data2.close()
+
+###############################################################
+# obiecte the tip bytearray
+# encoding este folosit pentru a determina se bytes corespund la un anumit caracter
+# acelas caracter poate avea assignat alt set de bytes pentru un encoding differit
+
+set_de_bytes = '\x03\x00\x00\x33'
+byte_array = bytearray(set_de_bytes, encoding='UTF-8')
+
+print(type(byte_array))
+print(dir(byte_array))
+
+###############################################################
+# Statement-ul with
+# metoda __exit__ de pe obiectele de tip stream executa stream.close()
+
+logfile = 'testfile.log'
+with open(logfile, 'r') as fisier:
+    text = fisier.read()
+
+
+class TestObject():
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print('Stop with')
+
+    def print_something(self):
+        print('something')
+
+
+with TestObject() as obj:
+    obj.print_something()
+    #raise AttributeError('Testing exit')
+
+print('End of Script')
+
+###############################################################
+# Explicatii si cauze pentru diverse tipuri de errori
+
+try:
+    fisier = open('testfile.log', 'a')
+    fisier.write('100')
+    fisier = open('somefile.txt', 'r')
+except FileNotFoundError:
+    pass
+except TypeError:
+    pass
+except PermissionError:
+    pass
+
+
+###############################################################
+# Exemplu minimalaist de functie decorator
+
+def decorate_with(func):  # functia decorata este argumentul primit de functia decorator
+    def wrapper(*args):  # argumentele functiei decorate ajung ca argumente pentru wrapper
+        print('Inainte de functie')
+        func(*args)
+        print('Dupa functie')
+
+    return wrapper
+
+
+@decorate_with
+def function_to_be_decorate(message):
+    print(message)
+
+
+function_to_be_decorate('Functie decorata')

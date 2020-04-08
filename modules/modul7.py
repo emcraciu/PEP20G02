@@ -15,3 +15,14 @@ print('Start my code')
 process.start()
 print('Stop my code')
 process.join()
+
+
+class OBJ():
+
+    def a(self):
+        pass
+
+class IterOBJ(OBJ):
+
+    def a(self, x):
+        pass

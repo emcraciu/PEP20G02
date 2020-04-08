@@ -2,7 +2,7 @@
 Tema4 - 40% din nota finala
 Creati o functie care poate lua ca argument un obiect iterabil ce poate contine alte obiecte iterabile sau
 ne iterabile. Se va itera peste toate obiectele iterabile de la orice nivel si se va crea o lista cu toate obiectele
-ce nu pot si iterte sau incazul string-urilor daca lungimea lor este 1
+ce nu pot si iterte sau in cazul string-urilor daca lungimea lor este 1
 Nu uitati ca puteti folosi recursivitate
 
 ex:
