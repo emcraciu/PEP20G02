@@ -1,5 +1,5 @@
 """
-Tema1 - 30% din nota finala
+Tema5 - 30% din nota finala
 Moditicati acest iterator astfel incat sa genereze urmatorul numar prim doar atunci cand
 este apelata functia next() pe obiectul de tip 'PrimesIter' si nu toate numerele prime atunci cand se instantiaza
 Aveti un indiciu cu o geseala mai jos si va trebui sa modificati si constructorul
