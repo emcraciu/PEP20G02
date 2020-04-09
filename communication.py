@@ -18,6 +18,5 @@ client.start()
 
 client.send(TEXT)
 server.stop()
-print(server.messages)
 
 assert TEXT == server.messages[0][1], 'Decrypt failed'

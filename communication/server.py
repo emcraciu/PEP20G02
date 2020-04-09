@@ -40,7 +40,6 @@ class Server(Communicator):
         """
         connection, addr = self.socket.accept()
         with connection:
-            print('Connected by', addr)
             self.__server_key_exchange(connection)
             encrypted_message = str(connection.recv(4096), encoding='UTF-8')
         message = decrypt(encrypted_message, self._Communicator__shared_secret)
